@@ -4,38 +4,37 @@ const userSchema = mongoose.Schema(
   {
     name: {
       type: String,
-      required: [true, "Por favor informe um nome!"],
+      required: [true, "Please add a name"],
     },
     email: {
       type: String,
-      required: [true, "Por favor informe um email!"],
+      required: [true, "Please add a email"],
       unique: true,
       trim: true,
       match: [
         /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-        "Por favor informe um email válido!",
+        "Please enter a valid emaial",
       ],
     },
-
     password: {
       type: String,
-      required: [true, "Por favor informe sua senha!"],
-      minLength: [6, "Senha deve ter 6 ou mais caracteres!"],
-      maxLength: [23, "Senha deve ter no maximo 23 caracteres!"],
+      required: [true, "Please add a password"],
+      minLength: [6, "Password must be up to 6 characters"],
+      //   maxLength: [23, "Password must not be more than 23 characters"],
     },
     photo: {
       type: String,
-      required: [true, "Por favor adicione sua foto de perfil!"],
+      required: [true, "Please add a photo"],
       default: "https://i.ibb.co/4pDNDk1/avatar.png",
     },
     phone: {
       type: String,
-      default: "+55",
+      default: "+234",
     },
     bio: {
       type: String,
-      default: "Escreva sua Bio aqui!",
-      maxLength: [255, "Sua Bio deve ter no maximo 255 caracteres!"],
+      maxLength: [250, "Bio must not be more than 250 characters"],
+      default: "bio",
     },
   },
   {
@@ -43,5 +42,5 @@ const userSchema = mongoose.Schema(
   }
 );
 
-const User = mongoose.model("USer", userSchema);
+const User = mongoose.model("User", userSchema);
 module.exports = User;
